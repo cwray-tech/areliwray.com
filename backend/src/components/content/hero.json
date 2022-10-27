@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "string"
+    }
+  }
+}
