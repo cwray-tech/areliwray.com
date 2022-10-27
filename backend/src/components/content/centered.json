@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_centereds",
+  "info": {
+    "displayName": "Centered",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "richtext"
+    }
+  }
+}

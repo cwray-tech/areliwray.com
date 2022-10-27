@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_content_heroes",
+  "collectionName": "components_content_left_images",
   "info": {
-    "displayName": "Hero",
+    "displayName": "Left Image",
     "icon": "address-card"
   },
   "options": {},
@@ -11,6 +11,9 @@
     },
     "Subtitle": {
       "type": "string"
+    },
+    "Content": {
+      "type": "richtext"
     },
     "Image": {
       "allowedTypes": [

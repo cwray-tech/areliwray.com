@@ -26,6 +26,15 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "Content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.hero",
+        "content.centered",
+        "content.left-image",
+        "content.right-image"
+      ]
     }
   }
 }
