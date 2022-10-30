@@ -27,8 +27,7 @@ const props = defineProps({
   },
   HeroImageSrc: {
     type: String,
-    default:
-      "https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80",
+    default: "/images/areli-profile-picture.jpg",
   },
 });
 const ImageAlt = props.HeroTitle + " " + props.HeroSubTitle;

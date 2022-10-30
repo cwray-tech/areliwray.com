@@ -1,6 +1,6 @@
 <template>
   <div>
     <NavigationTheHeader />
-    <SectionHero />
+    <slot />
   </div>
 </template>
