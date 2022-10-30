@@ -1,3 +1,5 @@
 <template>
-  <SectionHero />
+  <div>
+    <SectionHero />
+  </div>
 </template>
