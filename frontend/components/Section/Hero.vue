@@ -2,39 +2,39 @@
 const props = defineProps({
   HeroTitle: {
     type: String,
-    default: "Data to enrich your",
+    default: "Dreamer, Author, and Mother.",
   },
   HeroSubTitle: {
     type: String,
-    default: "online business",
+    default: "Areli Wray",
   },
   HeroDescription: {
     type: String,
     default:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.",
+      "I am a dreamer, author, and mother. I am a lover of all things creative and I am passionate about helping others find their voice and share their stories.",
   },
   HeroButton1Text: {
     type: String,
-    default: "Get started",
   },
   HeroButton1Link: {
     type: String,
-    default: "#",
   },
   HeroButton2Text: {
     type: String,
-    default: "Live demo",
   },
   HeroButton2Link: {
     type: String,
-    default: "#",
   },
-  HeroImage: {
+  HeroImageSrc: {
     type: String,
     default:
       "https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80",
   },
 });
+const ImageAlt = props.HeroTitle + " " + props.HeroSubTitle;
+const showButton1 = props.HeroButton1Text && props.HeroButton1Link;
+const showButton2 = props.HeroButton2Text && props.HeroButton2Link;
+const showButtons = showButton1 || showButton2;
 </script>
 
 <template>
@@ -48,19 +48,26 @@ const props = defineProps({
             class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
           >
             <span class="block xl:inline">{{ HeroTitle }}</span>
-            {{ " " }}
-            <span class="block text-indigo-600 xl:inline">{{
-              HeroSubTitle
-            }}</span>
+            <span v-if="HeroSubTitle">
+              {{ " " }}
+              <span class="block text-indigo-600 xl:inline">{{
+                HeroSubTitle
+              }}</span>
+            </span>
           </h1>
           <p
-            class="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
+            v-if="HeroDescription"
+            class="mx-auto mt-3 max-w-xl text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
           >
             {{ HeroDescription }}
           </p>
-          <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
+          <div
+            v-if="showButtons"
+            class="mt-10 sm:flex sm:justify-center lg:justify-start"
+          >
             <div class="rounded-md shadow">
               <a
+                v-if="showButton1"
                 :href="HeroButton1Link"
                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
                 >{{ HeroButton1Text }}</a
@@ -68,6 +75,7 @@ const props = defineProps({
             </div>
             <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <a
+                v-if="showButton2"
                 :href="HeroButton2Link"
                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
                 >{{ HeroButton2Text }}</a
@@ -81,8 +89,8 @@ const props = defineProps({
       >
         <img
           class="absolute inset-0 h-full w-full object-cover"
-          :src="HeroImage"
-          :alt="HeroTitle + ' ' + HeroSubTitle"
+          :src="HeroImageSrc"
+          :alt="ImageAlt"
         />
       </div>
     </main>
