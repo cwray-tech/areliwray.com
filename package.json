@@ -1,0 +1,24 @@
+{
+  "name": "areliwray.com",
+  "version": "1.0.0",
+  "description": "Author and Mother Areli Wray's personal portfolio.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwray-tech/areliwray.com.git"
+  },
+  "keywords": [
+    "author",
+    "website",
+    "portfolio",
+    "strapi"
+  ],
+  "author": "Christopher Wray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cwray-tech/areliwray.com/issues"
+  },
+  "homepage": "https://github.com/cwray-tech/areliwray.com#readme"
+}
