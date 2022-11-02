@@ -1,38 +1,38 @@
 <script setup>
 const props = defineProps({
-  HeroTitle: {
+  Title: {
     type: String,
     default: "Dreamer, Author, and Mother.",
   },
-  HeroSubTitle: {
+  SubTitle: {
     type: String,
     default: "Areli Wray",
   },
-  HeroDescription: {
+  Content: {
     type: String,
     default:
       "I am a dreamer, author, and mother. I am a lover of all things creative and I am passionate about helping others find their voice and share their stories.",
   },
-  HeroButton1Text: {
-    type: String,
-  },
-  HeroButton1Link: {
-    type: String,
-  },
-  HeroButton2Text: {
-    type: String,
-  },
-  HeroButton2Link: {
-    type: String,
-  },
-  HeroImageSrc: {
+  ImageSrc: {
     type: String,
     default: "/images/areli-profile-picture.jpg",
   },
+  Button1Text: {
+    type: String,
+  },
+  Button1Link: {
+    type: String,
+  },
+  Button2Text: {
+    type: String,
+  },
+  Button2Link: {
+    type: String,
+  },
 });
-const ImageAlt = props.HeroTitle + " " + props.HeroSubTitle;
-const showButton1 = props.HeroButton1Text && props.HeroButton1Link;
-const showButton2 = props.HeroButton2Text && props.HeroButton2Link;
+const ImageAlt = props.Title + " " + props.SubTitle;
+const showButton1 = props.Button1Text && props.Button1Link;
+const showButton2 = props.Button2Text && props.Button2Link;
 const showButtons = showButton1 || showButton2;
 </script>
 
@@ -46,19 +46,19 @@ const showButtons = showButton1 || showButton2;
           <h1
             class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
           >
-            <span class="block xl:inline">{{ HeroTitle }}</span>
-            <span v-if="HeroSubTitle">
+            <span class="block xl:inline">{{ Title }}</span>
+            <span v-if="SubTitle">
               {{ " " }}
               <span class="block text-indigo-600 xl:inline">{{
-                HeroSubTitle
+                SubTitle
               }}</span>
             </span>
           </h1>
           <p
-            v-if="HeroDescription"
+            v-if="Content"
             class="mx-auto mt-3 max-w-xl text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
           >
-            {{ HeroDescription }}
+            {{ Content }}
           </p>
           <div
             v-if="showButtons"
@@ -67,17 +67,17 @@ const showButtons = showButton1 || showButton2;
             <div class="rounded-md shadow">
               <a
                 v-if="showButton1"
-                :href="HeroButton1Link"
+                :href="Button1Link"
                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
-                >{{ HeroButton1Text }}</a
+                >{{ Button1Text }}</a
               >
             </div>
             <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <a
                 v-if="showButton2"
-                :href="HeroButton2Link"
+                :href="Button2Link"
                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-indigo-600 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
-                >{{ HeroButton2Text }}</a
+                >{{ Button2Text }}</a
               >
             </div>
           </div>
@@ -88,7 +88,7 @@ const showButtons = showButton1 || showButton2;
       >
         <img
           class="absolute inset-0 h-full w-full object-cover"
-          :src="HeroImageSrc"
+          :src="ImageSrc"
           :alt="ImageAlt"
         />
       </div>
