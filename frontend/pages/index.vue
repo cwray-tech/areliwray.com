@@ -1,7 +1,7 @@
 <template>
   <div>
     <SectionHero />
-    <SectionCentered />
-    <SectionImageRight />
+    <!-- <SectionCentered /> -->
+    <!-- <SectionImageRight /> -->
   </div>
 </template>
