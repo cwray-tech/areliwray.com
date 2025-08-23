@@ -50,11 +50,9 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
 
   if (!post) return <PayloadRedirects url={url} />
-  const { populatedAuthors, keyPassages, series } = post
+  const { populatedAuthors, series } = post
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
-
-  const hasKeyPassages = keyPassages && keyPassages.length > 0
 
   const hasSeries = series && typeof series === 'object'
 
@@ -109,30 +107,6 @@ export default async function Post({ params: paramsPromise }: Args) {
                 <div className="flex flex-col gap-2">
                   <p className="text-sm">By</p>
                   <p className="text-sm">{formatAuthors(populatedAuthors)}</p>
-                </div>
-              )}
-              {hasKeyPassages && (
-                <div className="flex flex-col gap-2">
-                  <p className="text-sm">Key Passages</p>
-                  <p className="text-sm">
-                    {keyPassages?.map((keyPassage, index) => {
-                      if (typeof keyPassage === 'object' && keyPassage !== null) {
-                        const { reference } = keyPassage
-
-                        const titleToUse = reference || 'Unknown reference'
-
-                        const isLast = index === keyPassages.length - 1
-
-                        return (
-                          <React.Fragment key={index}>
-                            {titleToUse}
-                            {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                          </React.Fragment>
-                        )
-                      }
-                      return null
-                    })}
-                  </p>
                 </div>
               )}
             </div>
