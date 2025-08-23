@@ -247,7 +247,6 @@ export interface Post {
   };
   publishedAt?: string | null;
   authors?: (string | User)[] | null;
-  keyPassages?: (string | ScriptureReference)[] | null;
   populatedAuthors?:
     | {
         id?: string | null;
@@ -1277,7 +1276,6 @@ export interface PostsSelect<T extends boolean = true> {
       };
   publishedAt?: T;
   authors?: T;
-  keyPassages?: T;
   populatedAuthors?:
     | T
     | {
