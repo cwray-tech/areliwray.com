@@ -12,7 +12,6 @@ import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
-import { ScriptureReferences } from './collections/ScriptureReferences'
 import { Series } from './collections/Series'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
@@ -76,7 +75,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Media, Posts, Series, Categories, ScriptureReferences, Users],
+  collections: [Pages, Media, Posts, Series, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

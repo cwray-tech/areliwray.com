@@ -72,7 +72,6 @@ export interface Config {
     posts: Post;
     series: Series;
     categories: Category;
-    'scripture-references': ScriptureReference;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -90,7 +89,6 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     series: SeriesSelect<false> | SeriesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    'scripture-references': ScriptureReferencesSelect<false> | ScriptureReferencesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -410,18 +408,6 @@ export interface User {
       }[]
     | null;
   password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "scripture-references".
- */
-export interface ScriptureReference {
-  id: string;
-  reference: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -959,10 +945,6 @@ export interface PayloadLockedDocument {
         value: string | Category;
       } | null)
     | ({
-        relationTo: 'scripture-references';
-        value: string | ScriptureReference;
-      } | null)
-    | ({
         relationTo: 'users';
         value: string | User;
       } | null)
@@ -1318,17 +1300,6 @@ export interface CategoriesSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "scripture-references_select".
- */
-export interface ScriptureReferencesSelect<T extends boolean = true> {
-  reference?: T;
-  slug?: T;
-  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
 }
