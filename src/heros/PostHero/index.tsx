@@ -23,7 +23,7 @@ export const PostHero: React.FC<{
               if (typeof category === 'object' && category !== null) {
                 const { title: categoryTitle } = category
 
-                const titleToUse = categoryTitle || 'Untitled category'
+                const titleToUse = categoryTitle || 'Categoría sin título'
 
                 const isLast = index === categories.length - 1
 
@@ -51,7 +51,7 @@ export const PostHero: React.FC<{
 
           {publishedAt && (
             <div className="flex flex-col gap-1">
-              <p className="text-sm">Date Published</p>
+              <p className="text-sm">Fecha de publicación</p>
 
               <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
             </div>

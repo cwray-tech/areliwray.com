@@ -80,7 +80,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                   {series.description && <p className="text-sm">{series.description}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="text-sm font-medium">Posts in this series:</p>
+                  <p className="text-sm font-medium">Publicaciones de esta serie:</p>
                   <div className="flex flex-col gap-1">
                     {posts?.map((seriesPost, index) => {
                       const isCurrentPost = seriesPost.slug === slug
@@ -105,7 +105,7 @@ export default async function Post({ params: paramsPromise }: Args) {
             <div className="grid gap-4">
               {hasAuthors && (
                 <div className="flex flex-col gap-2">
-                  <p className="text-sm">By</p>
+                  <p className="text-sm">Por</p>
                   <p className="text-sm">{formatAuthors(populatedAuthors)}</p>
                 </div>
               )}
