@@ -70,7 +70,7 @@ export default function RichText(props: Props) {
         'payload-richtext break-words',
         {
           container: enableGutter,
-          'max-w-none': !enableGutter,
+          'max-w-full': !enableGutter,
           'mx-auto prose md:prose-md dark:prose-invert': enableProse,
         },
         className,

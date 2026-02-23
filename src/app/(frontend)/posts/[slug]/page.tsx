@@ -71,8 +71,8 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
-          <div className="max-w-[48rem] mx-auto grid gap-6">
-            <RichText data={post.content} enableGutter={false} />
+          <div className="max-w-[48rem] mx-auto flex flex-col gap-6">
+            <RichText data={post.content} enableGutter={false} className="max-w-full" />
             {hasSeries && (
               <div className="flex flex-col gap-4 p-6 bg-card rounded-lg border">
                 <div className="flex flex-col gap-2">
