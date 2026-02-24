@@ -11,8 +11,19 @@ import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
+import { ecommercePlugin } from '@payloadcms/plugin-ecommerce'
+
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { isAuthenticated } from '@/access/isAuthenticated'
+import { ProductsCollection } from '@/collections/Products'
+import { isAdmin } from '@/access/isAdmin'
+import { customer } from '@/access/isCustomer'
+import { adminOnlyFieldAccess } from '@/access/adminOnlyFieldAccess'
+import { adminOrPublishedStatus } from '@/access/adminOrPublishedStatus'
+import { isDocumentOwner } from '@/access/isDocumentOwner'
+import { customerOnlyFieldAccess } from '@/access/customerOnlyFieldAccess'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Areli Wray` : 'Areli Wray'
@@ -25,6 +36,28 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 }
 
 export const plugins: Plugin[] = [
+  vercelBlobStorage({
+    enabled: !!process.env.BLOB_READ_WRITE_TOKEN,
+    access: 'public',
+    collections: {
+      media: true,
+    },
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  }),
+  ecommercePlugin({
+    // You must add your access control functions here
+    access: {
+      adminOnlyFieldAccess,
+      adminOrPublishedStatus,
+      isCustomer: customerOnlyFieldAccess,
+      isAdmin,
+      isDocumentOwner,
+    },
+    customers: { slug: 'users' },
+    products: {
+      productsCollectionOverride: ProductsCollection,
+    },
+  }),
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {

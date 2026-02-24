@@ -6,16 +6,16 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { anyone } from '../access/anyone'
-import { authenticated } from '../access/authenticated'
+import { publicAccess } from '../access/publicAccess'
+import { isAuthenticated } from '../access/isAuthenticated'
 
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    create: authenticated,
-    delete: authenticated,
-    read: anyone,
-    update: authenticated,
+    create: isAuthenticated,
+    delete: isAuthenticated,
+    read: publicAccess,
+    update: isAuthenticated,
   },
   fields: [
     {

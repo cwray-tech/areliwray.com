@@ -1,16 +1,16 @@
 import type { CollectionConfig } from 'payload'
 
 import { slugField } from '@/fields/slug'
-import { anyone } from '../access/anyone'
-import { authenticated } from '../access/authenticated'
+import { publicAccess } from '../access/publicAccess'
+import { isAuthenticated } from '../access/isAuthenticated'
 
 export const Series: CollectionConfig = {
   slug: 'series',
   access: {
-    create: authenticated,
-    delete: authenticated,
-    read: anyone,
-    update: authenticated,
+    create: isAuthenticated,
+    delete: isAuthenticated,
+    read: publicAccess,
+    update: isAuthenticated,
   },
   admin: {
     defaultColumns: ['title', 'updatedAt'],
