@@ -1,6 +1,6 @@
 import type { ArchiveBlock as ArchiveBlockProps, Post } from '@/payload-types'
 
-import RichText from '@/components/RichText'
+import { RichText } from '@/components/RichText'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'

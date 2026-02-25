@@ -1,18 +1,12 @@
 'use client'
 
-import type { PayloadAdminBarProps, PayloadMeUser } from '@payloadcms/admin-bar'
+import type { PayloadAdminBarProps } from '@payloadcms/admin-bar'
 
-import { cn } from '@/utilities/ui'
+import { cn } from '@/utilities/cn'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import { PayloadAdminBar } from '@payloadcms/admin-bar'
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
-
-import './index.scss'
-
-import { getClientSideURL } from '@/utilities/getURL'
-
-const baseClass = 'admin-bar'
+import { User } from '@/payload-types'
 
 const collectionLabels = {
   pages: {
@@ -37,18 +31,19 @@ export const AdminBar: React.FC<{
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
-  const collection = (
-    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'pages'
-  ) as keyof typeof collectionLabels
-  const router = useRouter()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore - todo fix, not sure why this is erroring
+  const collection = collectionLabels?.[segments?.[1]] ? segments?.[1] : 'pages'
 
-  const onAuthChange = React.useCallback((user: PayloadMeUser) => {
-    setShow(Boolean(user?.id))
+  const onAuthChange = React.useCallback((user: User) => {
+    const canSeeAdmin = user?.roles && Array.isArray(user?.roles) && user?.roles?.includes('admin')
+
+    setShow(Boolean(canSeeAdmin))
   }, [])
 
   return (
     <div
-      className={cn(baseClass, 'py-2 bg-black text-white', {
+      className={cn('py-2 bg-black text-white', {
         block: show,
         hidden: !show,
       })}
@@ -62,20 +57,19 @@ export const AdminBar: React.FC<{
             logo: 'text-white',
             user: 'text-white',
           }}
-          cmsURL={getClientSideURL()}
-          collectionSlug={collection}
+          cmsURL={process.env.NEXT_PUBLIC_SERVER_URL}
           collectionLabels={{
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - todo fix, not sure why this is erroring
             plural: collectionLabels[collection]?.plural || 'Pages',
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - todo fix, not sure why this is erroring
             singular: collectionLabels[collection]?.singular || 'Page',
           }}
           logo={<Title />}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore - todo fix, not sure why this is erroring
           onAuthChange={onAuthChange}
-          onPreviewExit={() => {
-            fetch('/next/exit-preview').then(() => {
-              router.push('/')
-              router.refresh()
-            })
-          }}
           style={{
             backgroundColor: 'transparent',
             padding: 0,

@@ -1,4 +1,4 @@
-import RichText from '@/components/RichText'
+import { RichText } from '@/components/RichText'
 import React from 'react'
 
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'

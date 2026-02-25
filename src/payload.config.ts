@@ -3,7 +3,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
-import sharp from 'sharp' // sharp-import
+import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { defaultLexical } from '@/fields/defaultLexical'
@@ -33,10 +33,10 @@ export default buildConfig({
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
-      beforeLogin: ['@/components/BeforeLogin'],
+      beforeLogin: ['@/components/BeforeLogin#BeforeLogin'],
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: [],
+      beforeDashboard: ['@/components/BeforeDashboard#BeforeDashboard'],
       graphics: {
         Logo: '@/graphics/Logo',
         Icon: '@/graphics/Logo',
@@ -78,7 +78,7 @@ export default buildConfig({
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.PAYLOAD_SECRET || '',
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

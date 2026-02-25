@@ -1,7 +1,7 @@
 'use client'
 import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
 
-import RichText from '@/components/RichText'
+import { RichText } from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 import { useRouter } from 'next/navigation'

@@ -1,4 +1,4 @@
-import RichText from '@/components/RichText'
+import { RichText } from '@/components/RichText'
 import clsx from 'clsx'
 import React from 'react'
 
