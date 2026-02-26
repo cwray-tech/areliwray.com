@@ -32,21 +32,24 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   const canIndex = product._status === 'published'
 
   const seoImage = metaImage || (gallery.length ? (gallery[0]?.image as Media) : undefined)
+  const ogImages =
+    seoImage &&
+    typeof seoImage.url === 'string' &&
+    typeof seoImage.width === 'number' &&
+    typeof seoImage.height === 'number'
+      ? [
+          {
+            url: seoImage.url,
+            width: seoImage.width,
+            height: seoImage.height,
+            alt: typeof seoImage.alt === 'string' ? seoImage.alt : undefined,
+          },
+        ]
+      : undefined
 
   return {
     description: product.meta?.description || '',
-    openGraph: seoImage?.url
-      ? {
-          images: [
-            {
-              alt: seoImage?.alt,
-              height: seoImage.height!,
-              url: seoImage?.url,
-              width: seoImage.width!,
-            },
-          ],
-        }
-      : null,
+    openGraph: ogImages ? { images: ogImages } : null,
     robots: {
       follow: canIndex,
       googleBot: {
