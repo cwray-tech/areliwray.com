@@ -32,12 +32,12 @@ export async function sendOrderAccessEmail({
 
     const order = orders[0]
 
-    if (!order || !order.accessToken) {
-      return { success: true }
+    if (!order || !order.id) {
+      return { success: false }
     }
 
     const serverURL = getServerSideURL()
-    const orderURL = `${serverURL}/orders/${order.id}?email=${encodeURIComponent(email)}&accessToken=${order.accessToken}`
+    const orderURL = `${serverURL}/orders/${order.id}?email=${encodeURIComponent(email)}&id=${order.id}`
 
     const emailBody = `
         <h1>View Your Order</h1>
