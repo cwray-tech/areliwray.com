@@ -1,3 +1,6 @@
+.vercel
+.next
+pnpm-lock.yaml
 **/payload-types.ts
 .tmp
 **/.git
