@@ -116,6 +116,7 @@ const config = {
               '--tw-prose-headings': 'var(--text)',
               h1: {
                 fontWeight: 'normal',
+                fontFamily: 'serif',
                 marginBottom: '0.25em',
               },
             },
@@ -126,10 +127,12 @@ const config = {
             {
               h1: {
                 fontSize: '2.5rem',
+                fontFamily: 'serif',
               },
               h2: {
                 fontSize: '1.25rem',
                 fontWeight: 600,
+                fontFamily: 'serif',
               },
             },
           ],
