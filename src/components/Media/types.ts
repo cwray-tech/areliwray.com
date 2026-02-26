@@ -4,7 +4,7 @@ import type { ElementType, Ref } from 'react'
 import type { Media as MediaType } from '@/payload-types'
 
 export interface Props {
-  alt?: string
+  alt?: string | null
   className?: string
   fill?: boolean // for NextImage only
   height?: number
