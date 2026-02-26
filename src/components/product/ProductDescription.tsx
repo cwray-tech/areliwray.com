@@ -37,8 +37,17 @@ export function ProductDescription({ product }: { product: Product }) {
         return 0
       }) as Variant[]
 
-    const lowestVariant = variantsOrderedByPrice[0][priceField]
-    const highestVariant = variantsOrderedByPrice[variantsOrderedByPrice.length - 1][priceField]
+    if (!variantsOrderedByPrice.length) return
+
+    const [first] = variantsOrderedByPrice
+
+    if (!first) {
+      return
+    }
+    const last = variantsOrderedByPrice.at(-1)!
+
+    const lowestVariant = first[priceField]
+    const highestVariant = last[priceField]
     if (
       variantsOrderedByPrice &&
       typeof lowestVariant === 'number' &&
