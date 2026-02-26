@@ -33,13 +33,7 @@ export const RenderParamsComponent: React.FC<Props> = ({
           if (!paramValue) return null
 
           return (
-            <Message
-              className="mb-8"
-              key={paramValue}
-              {...{
-                [params[index]]: paramValue,
-              }}
-            />
+            <Message className="mb-8" key={`${params[index]}-${paramValue}`} message={paramValue} />
           )
         })}
       </div>
