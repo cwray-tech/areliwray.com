@@ -1,4 +1,3 @@
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
@@ -16,10 +15,8 @@ import { ecommercePlugin } from '@payloadcms/plugin-ecommerce'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
-import { isAuthenticated } from '@/access/isAuthenticated'
 import { ProductsCollection } from '@/collections/Products'
 import { isAdmin } from '@/access/isAdmin'
-import { customer } from '@/access/isCustomer'
 import { adminOnlyFieldAccess } from '@/access/adminOnlyFieldAccess'
 import { adminOrPublishedStatus } from '@/access/adminOrPublishedStatus'
 import { isDocumentOwner } from '@/access/isDocumentOwner'
@@ -123,5 +120,4 @@ export const plugins: Plugin[] = [
       },
     },
   }),
-  payloadCloudPlugin(),
 ]
