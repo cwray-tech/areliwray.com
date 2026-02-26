@@ -49,7 +49,7 @@ export const Card: React.FC<{
 
   return (
     <article
-      className={cn('rounded-lg shadow-sm overflow-hidden bg-card hover:cursor-pointer', className)}
+      className={cn('rounded-lg shadow-xs overflow-hidden bg-card hover:cursor-pointer', className)}
       ref={card.ref}
     >
       <div className="relative w-full max-h-48 overflow-hidden">
